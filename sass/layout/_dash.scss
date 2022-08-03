@@ -1,0 +1,81 @@
+@use './settings' as * ;
+@use '../helpers/mixins' as * ; 
+
+
+
+$BackgroundHeight:85px; 
+$BackgroundDisplay:45px;
+
+
+.cards { 
+  
+  display:grid;
+  grid-template-columns: repeat(auto-fill,$Width);
+  gap: $Space;
+  justify-content: center;
+
+  .card { 
+    flex-shrink: 0;
+    height: $CardHeight;
+    width: $Width;
+    
+    
+    .background{ 
+      display:flex;
+      justify-content: flex-end;
+      position: relative;
+      height: $BackgroundHeight;
+      width: 100%;
+      overflow: hidden;
+      z-index: -1;
+      border-radius: $Radius;
+      
+      img { 
+        position: relative;
+        top: -5px;
+      }
+    }
+    
+    .card-info { 
+      top: calc($BackgroundDisplay - $BackgroundHeight);
+      padding: $Padding;
+      transition: $Time;
+      background-color: $DarkBlue;
+      border-radius: $Radius;
+      position: relative;
+      height: calc($CardHeight - $BackgroundDisplay);
+
+      .header { 
+        @include center;
+        margin-bottom: 20px;
+      justify-content: space-between;
+      width: 100%;
+      
+      .title { 
+        font-weight: 500;
+      }
+
+      svg { 
+        cursor: pointer;
+      }
+    }
+  
+    .current-data { 
+      font-size: 3rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .previous-word , .previous-data { 
+      font-size: 14px;
+      color:$PaleBlue
+    }
+    
+    
+    .previous-word::after { 
+      content:'  -  ';
+    }
+  }
+  
+}
+}
